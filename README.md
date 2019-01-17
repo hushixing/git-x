@@ -1,3 +1,2 @@
 #git-x 
-hushixing
-first push
+git@github.com:hushixing/git-x.git
