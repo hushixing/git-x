@@ -1,0 +1,68 @@
+# 制作USB kali系统
+
+dd if=kali的iso文件 of=/dev/sdc bs=1M
+# 用dd命令将iso文件以1m的块复制到U盘中
+
+watch -n 5 killall -USR1 dd
+# 在新的命令行输入查看复制进度的命令
+
+parted
+# 磁盘管理
+devices
+# 列出磁盘列表
+select /dev/sdc
+# 选中sdc
+print 
+# 查看sdc
+mkpart primary 3139 7747
+# 划分剩余分区
+print
+# 查看磁盘情况
+quit
+# 退出
+
+cryptsetup --verbose --verify-passphrase luksFormat /dev/sdc3
+# 对分区进行前端加密
+YES
+0713
+0713
+ 
+cryptsetup luksOpen /dev/sdc3 usb
+# 用cryptsetup打开,usb为挂载名称
+
+ls /dev/mapper/usb
+# 查看
+
+|mkfs ext4 /dev/mapper/usb
+|# 文件系统格式化
+|
+|e2label /dev/mapper/usb persistence
+|# 修改卷标为persisitence
+|
+|# 格式化和改卷标可以用图形化界面进行
+
+mkdir -p /mnt/usb
+# 在mnt中新建usb文件夹
+
+mount /dev/mapper/usb /mnt/usb
+# 将分区挂载到/mnt/usb上
+
+echo "/ union" > /mnt/usb/persisitence.conf
+# 在分区中新建配置文件persisitence.conf，并且写入/ union
+
+umount /dev/mapper/usb
+# 卸载分区
+
+cryptsetup luksClose /dev/mapper/usb
+# 关闭加密分区
+
+
+
+
+
+
+
+
+
+
+

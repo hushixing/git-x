@@ -1,0 +1,14 @@
+学习ifconfig命令
+
+ifconfig eth0 down
+# 关闭某个网卡
+
+macchanger -m 11：11：11：11：11：11 eth0
+# 修改网卡的mac地址
+
+ifconfig eth0 up
+# 重新打开网卡
+
+ifconfig
+# 查看修改是否成功  重启后恢复
+

