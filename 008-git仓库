@@ -1,0 +1,24 @@
+git学习
+
+apt-get install git
+# 首先安装git
+git config --global user.name "hushixing"
+# 配置git信息，用户名hushixing
+git config --global user.email "hushixing-1986@163.com"
+# 配置git信息，用户邮箱hushixing-1986@163.com
+ssh-keygen -t rsa -C
+# 生成ssh密钥，公钥用于github，私钥留在本机用于通讯
+git init 
+# 在本机某个位置初始化本地库，同时确定github中有新的空白rspsitory
+vim testgit.txt
+# 在本地库中编辑文件testgit.txt
+git add testgit.txt
+# 将testgit.txt加入工作空间
+git commit -m "add testgit"
+# 将testgit.txt文件提交给仓库
+git status
+# 查看仓库的状态
+git remote add origin git@github.com:hushixing/git-x.git
+# 将本地库与github中的仓库建立链接
+git push -u origin master
+# 推送本地库内容至github仓库，这样已经初步完成了。

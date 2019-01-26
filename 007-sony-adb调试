@@ -1,0 +1,3 @@
+
+
+adb -d shell sh /storage/emulated/0/Android/data/web1n.stopapp/files/demon.sh
