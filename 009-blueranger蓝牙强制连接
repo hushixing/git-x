@@ -1,0 +1,11 @@
+blueranger蓝牙强制连接
+apt-get install blueranger
+# 安装blueranger
+hciconfig
+# 查看蓝牙设备
+hciconfig hci0 up
+# 开启蓝牙硬件
+hcitool scan
+# 蓝牙设备扫描
+blueranger.sh hci0 40:40:A7:CC:73:C2
+# 强制连接
