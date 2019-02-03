@@ -18,3 +18,13 @@ aircrack-ng -w /root/password CU_6pdx-*.cap
 
 sony z5c mac：    40:40:A7:B9:5F:EB
 surface kali mac：60:45:BD:E5:8C:C2
+
+
+*pyrit无线破解工具*
+pyrit -r wlan0mon -o *.cap stripLive
+# 运用pyrit进行抓包（四次握手），通过网卡为wlan0mon，输出的包文件名为*.cap,并且过滤掉无用的包
+pyrit -r *.cap analyze
+# 对抓取的四次握手包cap进行分析
+
+
+

@@ -1,0 +1,5 @@
+*打开蓝牙*
+
+# 启动dbus和蓝牙服务(使用service或/etc/init.d/均可)：
+service dbus start
+/etc/init.d/bluetooth start
